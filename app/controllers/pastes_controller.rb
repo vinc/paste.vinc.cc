@@ -29,7 +29,7 @@ class PastesController < ApplicationController
 
   private
     def set_paste
-      @paste = Paste.find_by(token: params[:token])
+      @paste = Paste.gt(expired_at: Time.zone.now).find_by(token: params[:token])
     end
 
     def paste_params
