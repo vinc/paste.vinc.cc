@@ -1,4 +1,8 @@
-var passphrase = $('[name=passphrase]').val();
 var url = '<%= url_for(@paste) %>';
 
-window.location = url + '#' + passphrase;
+var passphrase = $('[name=passphrase]').val();
+if (passphrase.length > 0) {
+  url += '#' + passphrase;
+}
+
+window.location = url;
