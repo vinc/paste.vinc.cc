@@ -11,8 +11,8 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= f.label :content %>
+  <div class="form-group" id="form-group-content">
+    <%= f.label :content, class: 'sr-only' %>
     <%= f.text_area :content, class: 'form-control', placeholder: 'Enter markdown text' %>
   </div>
 
@@ -21,5 +21,5 @@
     <%= f.check_box :encrypted %>
   </div>
 
-  <%= f.submit class: 'btn btn-primary' %>
+  <%= f.submit 'Create', class: 'btn btn-primary' %>
 <% end %>
