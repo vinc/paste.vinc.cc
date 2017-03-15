@@ -11,17 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :content %>
-    <%= f.text_area :content %>
+    <%= f.text_area :content, class: 'form-control', placeholder: 'Enter markdown text' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :encrypted %>
     <%= f.check_box :encrypted %>
   </div>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.submit class: 'btn btn-primary' %>
 <% end %>

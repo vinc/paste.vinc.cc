@@ -1,5 +1,5 @@
 class DocumentsController < ApplicationController
-  before_action :set_document, only: [:show, :edit, :update, :destroy]
+  before_action :set_document, only: [:show]
 
   def index
     @documents = Document.all
@@ -10,9 +10,6 @@ class DocumentsController < ApplicationController
 
   def new
     @document = Document.new
-  end
-
-  def edit
   end
 
   def create
@@ -29,29 +26,9 @@ class DocumentsController < ApplicationController
     end
   end
 
-  def update
-    respond_to do |format|
-      if @document.update(document_params)
-        format.html { redirect_to @document, notice: 'Document was successfully updated.' }
-        format.json { render :show, status: :ok, location: @document }
-      else
-        format.html { render :edit }
-        format.json { render json: @document.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def destroy
-    @document.destroy
-    respond_to do |format|
-      format.html { redirect_to documents_url, notice: 'Document was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
     def set_document
-      @document = Document.find(params[:token])
+      @document = Document.find_by(token: params[:token])
     end
 
     def document_params
