@@ -24,14 +24,20 @@ $(document).on('turbolinks:load', function() {
     $('[name=passphrase]').prop('disabled', true);
   });
 
-  if ($('.content').data('encrypted')) {
-    var ciphertext = $('.content').text();
-    var passphrase = window.location.hash.slice(1);
-    var bytes = CryptoJS.AES.decrypt(ciphertext, passphrase);
-    var plaintext = bytes.toString(CryptoJS.enc.Utf8);
-    
-    var markdown = window.markdownit();
-    var content = markdown.render(plaintext);
-    $('.content').html(content);
+  var contentDiv = $('.content');
+  if (contentDiv.length) {
+    if (contentDiv.data('encrypted')) {
+      var ciphertext = contentDiv.text();
+      var passphrase = window.location.hash.slice(1);
+      var bytes = CryptoJS.AES.decrypt(ciphertext, passphrase);
+      var plaintext = bytes.toString(CryptoJS.enc.Utf8);
+
+      var markdown = window.markdownit();
+      var content = markdown.render(plaintext);
+
+      contentDiv.html(content);
+    }
+
+    hljs.initHighlighting();
   }
 });

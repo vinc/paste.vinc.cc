@@ -53,12 +53,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'mongoid', '~> 6.1.0'
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'redcarpet'
-gem 'rouge'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
   gem 'rails-assets-crypto-js'
   gem 'rails-assets-markdown-it'
+  gem 'rails-assets-highlightjs'
 end
 
 group :test do

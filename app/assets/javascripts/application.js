@@ -16,5 +16,6 @@
 //= require tether
 //= require bootstrap
 //= require markdown-it
+//= require highlightjs
 //= require crypto-js/crypto-js
 //= require_tree .
