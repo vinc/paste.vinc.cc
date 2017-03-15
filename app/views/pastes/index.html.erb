@@ -1,0 +1,11 @@
+<h1>Pastes</h1>
+
+<ul>
+  <% @pastes.each do |paste| %>
+    <li><%= link_to(paste.token, paste) %></li>
+  <% end %>
+</ul>
+
+<br>
+
+<%= link_to 'New Paste', new_paste_path %>

@@ -1,6 +1,6 @@
 require 'rouge/plugins/redcarpet'
 
-module DocumentsHelper
+module PastesHelper
   class HTML < Redcarpet::Render::HTML
     include Rouge::Plugins::Redcarpet
   end

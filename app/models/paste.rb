@@ -1,4 +1,4 @@
-class Document
+class Paste
   include Mongoid::Document
   include Mongoid::Timestamps
   include Tokenizable
