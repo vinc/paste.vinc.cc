@@ -1,2 +1,2 @@
-json.extract! document, :token, :content, :encrypted, :created_at, :updated_at, :expired_at
-json.url document_url(document, format: :json)
+json.extract! paste, :token, :content, :encrypted, :created_at, :expired_at
+json.url paste_url(paste, format: :json)

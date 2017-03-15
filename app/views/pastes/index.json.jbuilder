@@ -1,1 +1,1 @@
-json.array! @documents, partial: 'documents/document', as: :document
+json.array! @pastes, partial: 'pastes/paste', as: :paste
