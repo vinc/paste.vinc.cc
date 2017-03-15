@@ -1,4 +1,4 @@
-<%= form_for(paste) do |f| %>
+<%= form_for(paste, remote: true) do |f| %>
   <% if paste.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(paste.errors.count, "error") %> prohibited this paste from being saved:</h2>
@@ -12,12 +12,21 @@
   <% end %>
 
   <div class="form-group" id="form-group-content">
-    <%= f.label :content, class: 'sr-only' %>
-    <%= f.text_area :content, class: 'form-control', placeholder: 'Enter markdown text' %>
+    <%= text_area_tag :plaintext, '', class: 'form-control', placeholder: 'Enter markdown text' %>
+    <%= f.hidden_field :content %>
+  </div>
+
+  <div class="form-group row">
+    <%= f.hidden_field :encrypted %>
+    <div class="col-sm-9 pr-sm-2">
+      <%= text_field_tag 'passphrase', '', placeholder: 'Add passphrase to encrypt text', class: 'form-control' %>
+    </div>
+    <div class="col-sm-3 mt-2 mt-sm-0 pl-sm-2">
+      <%= button_tag 'Generate', name: 'generate-passphrase', type: 'button', class: 'btn btn-secondary form-control' %>
+    </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :expired_at, class: 'sr-only' %>
     <%= f.select(:expired_at, %w(hour day week month).map { |i| ["Expire in 1 #{i}", i] }, { }, { class: 'form-control custom-select' }) %>
   </div>
 

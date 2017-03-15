@@ -19,6 +19,7 @@ class PastesController < ApplicationController
       if @paste.save
         format.html { redirect_to @paste, notice: 'Paste was successfully created.' }
         format.json { render :show, status: :created, location: @paste }
+        format.js   { }
       else
         format.html { render :new }
         format.json { render json: @paste.errors, status: :unprocessable_entity }
@@ -33,7 +34,7 @@ class PastesController < ApplicationController
 
     def paste_params
       expired_at_param = params.require(:paste).fetch(:expired_at, 'hour')
-      params.require(:paste).permit(:content, :encrypted).
+      params.require(:paste).permit(:content, :encrypted, :expired_at).
         merge(:expired_at => 1.send(expired_at_param.to_sym).from_now)
     end
 end
