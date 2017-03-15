@@ -49,3 +49,16 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'mongoid', '~> 6.1.0'
+gem 'bootstrap', '~> 4.0.0.alpha6'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+  gem 'rails-assets-crypto-js'
+end
+
+group :test do
+  gem 'rspec-rails', '~> 3.5'
+  gem 'capybara'
+end
