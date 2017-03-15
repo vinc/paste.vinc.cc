@@ -15,5 +15,6 @@
 //= require turbolinks
 //= require tether
 //= require bootstrap
+//= require markdown-it
 //= require crypto-js/crypto-js
 //= require_tree .

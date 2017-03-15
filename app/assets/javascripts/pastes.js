@@ -30,6 +30,8 @@ $(document).on('turbolinks:load', function() {
     var bytes = CryptoJS.AES.decrypt(ciphertext, passphrase);
     var plaintext = bytes.toString(CryptoJS.enc.Utf8);
     
-    $('.content').html(plaintext);
+    var markdown = window.markdownit();
+    var content = markdown.render(plaintext);
+    $('.content').html(content);
   }
 });
