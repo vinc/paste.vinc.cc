@@ -2,7 +2,7 @@ class PastesController < ApplicationController
   before_action :set_paste, only: [:show]
 
   def index
-    @pastes = Paste.all
+    @pastes = Paste.not.expired
   end
 
   def show
@@ -29,7 +29,7 @@ class PastesController < ApplicationController
 
   private
     def set_paste
-      @paste = Paste.gt(expired_at: Time.zone.now).find_by(token: params[:token])
+      @paste = Paste.not.expired.find_by(token: params[:token])
     end
 
     def paste_params
