@@ -32,6 +32,8 @@ class PastesController < ApplicationController
     end
 
     def paste_params
-      params.require(:paste).permit(:content, :encrypted)
+      expired_at_param = params.require(:paste).fetch(:expired_at, 'hour')
+      params.require(:paste).permit(:content, :encrypted).
+        merge(:expired_at => 1.send(expired_at_param.to_sym).from_now)
     end
 end
