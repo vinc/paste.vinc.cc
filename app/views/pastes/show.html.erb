@@ -1,1 +1,24 @@
-<div class="content" data-encrypted="<%= @paste.encrypted? %>"><%= render_markup(@paste.content) %></div>
+<% if @paste.encrypted? %>
+  <div class="alert alert-danger alert-encrypted" role="alert" style="display:none">
+    <p>The content of this page is encrypted.</p>
+
+    <form id="decrypt_paste">
+      <div class="form-group row mb-0">
+        <div class="col-sm-9 pr-sm-2">
+          <%= text_field_tag 'passphrase', '', placeholder: 'Enter passphrase to decrypt text', class: 'form-control' %>
+          <div class="form-control-feedback" style="display:none"></div>
+        </div>
+        <div class="col-sm-3 mt-2 mt-sm-0 pl-sm-2">
+          <%= button_tag 'Decrypt', type: 'submit', class: 'btn btn-primary', style: 'width:100%' %>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="content encrypted">
+    <%= @paste.content %>
+  </div>
+<% else %>
+  <div class="content">
+    <%= render_markup(@paste.content) %>
+  </div>
+<% end %>
