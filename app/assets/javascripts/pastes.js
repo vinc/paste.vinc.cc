@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function() {
   $('[name=generate-passphrase]').click(function() {
-    var passphrase = SecretBox.generatePassphrase();
+    var passphrase = Crypto.generatePassphrase();
 
     $('[name=passphrase]').val(passphrase);
   });
@@ -10,7 +10,7 @@ $(document).on('turbolinks:load', function() {
     var passphrase = $('[name=passphrase]').val();
 
     if (passphrase.length > 0) {
-      var encryptedContent = SecretBox.encrypt(content, passphrase);
+      var encryptedContent = Crypto.encrypt(content, passphrase);
 
       $('[name="paste[content]"]').val(encryptedContent);
       $('[name="paste[encrypted]"]').val(true);
@@ -35,7 +35,7 @@ $(document).on('turbolinks:load', function() {
           var content;
 
           try {
-            content = SecretBox.decrypt(encryptedContent, passphrase);
+            content = Crypto.decrypt(encryptedContent, passphrase);
           } catch(e) {
             return decryptContentError(passphrase, 'Invalid passphrase');
           }

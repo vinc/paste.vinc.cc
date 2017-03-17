@@ -1,4 +1,4 @@
-var SecretBox = {
+var Crypto = {
   generatePassphrase: function() {
     return sodium.to_hex(sodium.randombytes_buf(24));
   },
