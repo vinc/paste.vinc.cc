@@ -1,3 +1,5 @@
+<% content_for(:title, "Paste #{@paste.token}") %>
+
 <% if @paste.encrypted? %>
   <div class="alert alert-danger alert-encrypted" role="alert" style="display:none">
     <p>The content of this page is encrypted.</p>
