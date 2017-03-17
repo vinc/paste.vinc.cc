@@ -5,7 +5,7 @@ development:
     default:
       # Defines the name of the default database that Mongoid can connect to.
       # (required).
-      database: pastemd_development
+      database: pastemarkdown_development
       # Provides the hosts the default client can connect to. Must be an array
       # of host:port pairs. (required)
       hosts:
@@ -138,7 +138,7 @@ development:
 test:
   clients:
     default:
-      database: pastemd_test
+      database: pastemarkdown_test
       hosts:
         - localhost:27017
       options:
