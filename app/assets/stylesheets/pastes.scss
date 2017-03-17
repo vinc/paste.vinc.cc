@@ -33,3 +33,8 @@ form {
 .content.encrypted {
   word-break: break-all;
 }
+
+.table thead th {
+  background: inherit;
+  border: none !important;
+}

@@ -1,5 +1,11 @@
 <% content_for(:title, "Paste #{@paste.token}") %>
 
+<ol class="breadcrumb mb-4">
+  <li class="breadcrumb-item"><%= link_to 'Home', root_path %></li>
+  <li class="breadcrumb-item"><%= link_to 'Pastes', pastes_path %></li>
+  <li class="breadcrumb-item active"><%= @paste.token %></li>
+</ol>
+
 <% if @paste.encrypted? %>
   <div class="alert alert-warning alert-encrypted" role="alert" style="display:none">
     <p>The content of this page is encrypted.</p>
