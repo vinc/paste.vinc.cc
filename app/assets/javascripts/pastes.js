@@ -1,16 +1,18 @@
 $(document).on('turbolinks:load', function() {
+  var createForm = $('#new_paste');
+
   $('[name=generate-passphrase]').click(function() {
     var passphrase = Crypto.generatePassphrase();
 
     $('[name=passphrase]').val(passphrase);
   });
 
-  var form = $('#new_paste');
 
   $('[name=content]').prop('disabled', false);
   $('[name=passphrase]').prop('disabled', false);
+  $('[type=submit]', createForm).prop('disabled', false).text('Create');
 
-  form.on('submit', function(e) {
+  createForm.on('submit', function(e) {
     // Don't send local data to server
     $('[name=content]').prop('disabled', true);
     $('[name=passphrase]').prop('disabled', true);
@@ -18,11 +20,9 @@ $(document).on('turbolinks:load', function() {
     var passphrase = $('[name=passphrase]').val();
 
     if (passphrase.length > 0) {
-      $('[type=submit]', form).
-        removeData('disable-with').
-        removeAttr('disable-with').
+      $('[type=submit]', createForm).
         prop('disabled', true).
-        val('Derivating key ...');
+        text('Encrypting ...');
     }
 
     // Derivating a key from the passphrase will block the UI thread,
@@ -30,13 +30,13 @@ $(document).on('turbolinks:load', function() {
     // So we need to remove `remote: true` in `from_tag` and handle
     // the remote call here.
     setTimeout(function() {
-      $.rails.handleRemote(form);
+      $.rails.handleRemote(createForm);
     }, 0);
 
     e.preventDefault();
   });
 
-  form.on('ajax:before', function() {
+  createForm.on('ajax:before', function() {
     var content = $('[name=content]').val();
     var passphrase = $('[name=passphrase]').val();
 
@@ -51,7 +51,7 @@ $(document).on('turbolinks:load', function() {
       $('[name="paste[content]"]').val(content);
       $('[name="paste[encrypted]"]').val(false);
     }
-    $('[type=submit]', form).val('Sending paste ...');
+    $('[type=submit]', createForm).text('Sending ...');
   });
 
   var decryptContent = function(passphrase) {
@@ -88,25 +88,43 @@ $(document).on('turbolinks:load', function() {
 
   var decryptContentError = function(passphrase, msg) {
     if (msg) {
-      $('[name=passphrase]').val(passphrase);
       $('[name=passphrase]').addClass('form-control-danger');
       $('.form-group').addClass('has-danger');
       $('.form-control-feedback').html(msg);
       $('.form-control-feedback').show();
     }
-    $('.alert-encrypted').show();
+  };
+
+  var decryptForm = $('#decrypt_paste');
+  
+  var decryptContentInit = function(passphrase) {
+    if (passphrase.length > 0) {
+      $('[name=passphrase]', decryptForm).prop('disabled', true);
+      $('[type=submit]',     decryptForm).prop('disabled', true).
+        text('Decrypting ...');
+    }
+
+    setTimeout(function() {
+      decryptContent(passphrase);
+
+      $('[name=passphrase]', decryptForm).prop('disabled', false);
+      $('[type=submit]',     decryptForm).prop('disabled', false).
+        text('Decrypt');
+    }, 1000);
+
   };
 
   var passphrase = window.location.hash.slice(1);
+  
+  $('[name=passphrase]').val(passphrase);
+  decryptContentInit(passphrase);
 
-  decryptContent(passphrase);
+  decryptForm.submit(function(e) {
+    e.preventDefault();
 
-  $('#decrypt_paste').submit(function(e) {
     var passphrase = $('[name=passphrase]').val();
 
-    e.preventDefault();
     window.location.hash = passphrase;
-    decryptContent(passphrase);
+    decryptContentInit(passphrase);
   });
-
 });

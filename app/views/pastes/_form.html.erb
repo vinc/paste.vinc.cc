@@ -30,5 +30,5 @@
     <%= f.select(:expired_at, %w(hour day week month).map { |i| ["Expire in 1 #{i}", i] }, { }, { class: 'form-control custom-select' }) %>
   </div>
 
-  <%= f.submit 'Create', class: 'btn btn-primary' %>
+  <%= button_tag 'Create', type: 'submit', class: 'btn btn-primary' %>
 <% end %>
