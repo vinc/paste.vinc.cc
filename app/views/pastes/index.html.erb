@@ -2,12 +2,28 @@
 
 <h1>Recent pastes</h1>
 
-<ul>
-  <% @pastes.each do |paste| %>
-    <li><%= link_to(paste.token, paste) %></li>
-  <% end %>
+<table class="table mt-3">
+  <thead class="thead-default">
+    <tr>
+      <th>Paste</th>
+      <th>Creation</th>
+      <th>Expiration</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @pastes.each do |paste| %>
+      <tr>
+        <th scope="row"><%= link_to(paste.token, paste) %></th>
+        <td><%= distance_of_time_in_words(paste.created_at, Time.zone.now) %></td>
+        <td><%= distance_of_time_in_words(Time.zone.now, paste.expired_at) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+<table>
 </ul>
 
-<br>
-
-<%= link_to 'New Paste', new_paste_path %>
+<div class="text-center mt-3">
+  <div class="btn-group" role="group">
+    <%= link_to 'New Paste', new_paste_path, class: 'btn btn-primary', role: 'button' %>
+  </div>
+</div>

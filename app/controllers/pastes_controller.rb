@@ -2,7 +2,7 @@ class PastesController < ApplicationController
   before_action :set_paste, only: [:show]
 
   def index
-    @pastes = Paste.not.expired
+    @pastes = Paste.not.expired.desc(:created_at)
   end
 
   def show
