@@ -110,7 +110,7 @@ $(document).on('turbolinks:load', function() {
       $('[name=passphrase]', decryptForm).prop('disabled', false);
       $('[type=submit]',     decryptForm).prop('disabled', false).
         text('Decrypt');
-    }, 1000);
+    }, 0);
 
   };
 
