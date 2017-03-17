@@ -1,6 +1,6 @@
 $(document).on('turbolinks:load', function() {
   $('[name=generate-passphrase]').click(function() {
-    var passphrase = CryptoJS.lib.WordArray.random(32).toString();
+    var passphrase = SecretBox.generatePassphrase();
 
     $('[name=passphrase]').val(passphrase);
   });
@@ -10,10 +10,9 @@ $(document).on('turbolinks:load', function() {
     var passphrase = $('[name=passphrase]').val();
 
     if (passphrase.length > 0) {
-      var plaintext = 'content:' + content;
-      var ciphertext = CryptoJS.AES.encrypt(plaintext, passphrase).toString();
+      var encryptedContent = SecretBox.encrypt(content, passphrase);
 
-      $('[name="paste[content]"]').val(ciphertext);
+      $('[name="paste[content]"]').val(encryptedContent);
       $('[name="paste[encrypted]"]').val(true);
     } else {
       $('[name="paste[content]"]').val(content);
@@ -30,23 +29,16 @@ $(document).on('turbolinks:load', function() {
 
     if (contentDiv.length) {
       if (contentDiv.hasClass('encrypted')) {
-        var ciphertext = contentDiv.text().trim();
+        var encryptedContent = contentDiv.text().trim();
 
         if (passphrase.length > 0) {
-          var bytes = CryptoJS.AES.decrypt(ciphertext, passphrase);
+          var content;
 
-          var plaintext;
           try {
-            plaintext = bytes.toString(CryptoJS.enc.Utf8);
+            content = SecretBox.decrypt(encryptedContent, passphrase);
           } catch(e) {
             return decryptContentError(passphrase, 'Invalid passphrase');
           }
-          var start = 'content:';
-          if (!plaintext.startsWith(start)) {
-            return decryptContentError(passphrase, 'Invalid passphrase');
-          }
-          var content = plaintext.slice(start.length);
-          console.log(plaintext);
 
           var markdown = window.markdownit();
           var html = markdown.render(content);
