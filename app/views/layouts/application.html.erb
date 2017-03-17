@@ -6,6 +6,7 @@
 
     <title><%= content_for(:title) || 'Paste' %></title>
 
+    <meta name="crypto-salt" content="<%= Rails.application.secrets.crypto_salt %>">
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>

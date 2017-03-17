@@ -3,8 +3,8 @@ var Crypto = {
     return sodium.to_hex(sodium.randombytes_buf(24));
   },
 
-  deriveKey: function(passphrase, salt) {
-    var salt = sodium.from_hex('<%= Rails.application.secrets.crypto_salt %>')
+  deriveKey: function(passphrase) {
+    var salt = sodium.from_hex($('meta[name=crypto-salt]').attr('content'));
 
     console.assert(salt.length == sodium.crypto_pwhash_SALTBYTES);
 
