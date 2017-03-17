@@ -1,24 +1,12 @@
-# README
+README
+======
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Secure Markdown Pastebin
 
-Things you may want to cover:
+https://paste.vinc.cc
 
-* Ruby version
 
-* System dependencies
+License
+-------
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Copyright (c) 2017 Vincent Ollivier. Released under MIT.
