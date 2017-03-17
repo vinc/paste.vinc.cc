@@ -17,5 +17,5 @@
 //= require bootstrap
 //= require markdown-it
 //= require highlightjs
-//= require sodium.min
+//= require sodium_sumo.min
 //= require_tree .
