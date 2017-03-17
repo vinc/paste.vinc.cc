@@ -58,7 +58,9 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
   gem 'rails-assets-crypto-js'
   gem 'rails-assets-markdown-it'
-  gem 'rails-assets-highlightjs'
+
+  # gem 'rails-assets-highlight'
+  gem 'rails-assets-highlightjs' # with languages pack
 end
 
 group :test do
