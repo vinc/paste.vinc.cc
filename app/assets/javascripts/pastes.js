@@ -59,6 +59,7 @@ $(document).on('turbolinks:load', function() {
         }
       }
 
+      hljs.initHighlighting.called = false;
       hljs.initHighlighting();
     }
   };
@@ -75,6 +76,7 @@ $(document).on('turbolinks:load', function() {
   };
 
   var passphrase = window.location.hash.slice(1);
+
   decryptContent(passphrase);
 
   $('#decrypt_paste').submit(function(e) {
