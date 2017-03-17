@@ -6,7 +6,7 @@ var SecretBox = {
   deriveKey: function(passphrase, salt) {
     var keyLength = sodium.crypto_secretbox_KEYBYTES;
     var ops = sodium.crypto_pwhash_OPSLIMIT_INTERACTIVE;
-    var mem = sodium.crypto_pwhash_MEMLIMIT_INTERACTIVE;
+    var mem = sodium.crypto_pwhash_MEMLIMIT_INTERACTIVE / 2;
     var algo = sodium.crypto_pwhash_ALG_DEFAULT;
 
     return sodium.crypto_pwhash(keyLength, passphrase, salt, ops, mem, algo);
