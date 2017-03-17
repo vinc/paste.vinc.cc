@@ -58,8 +58,10 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
   gem 'rails-assets-markdown-it'
 
-  # gem 'rails-assets-highlight'
-  gem 'rails-assets-highlightjs' # with languages pack
+  # gem 'rails-assets-libsodium.js' # not bundled with crypto_pwhash
+
+  # gem 'rails-assets-highlight' # not bundled with languages pack
+  gem 'rails-assets-highlightjs'
 end
 
 group :test do
