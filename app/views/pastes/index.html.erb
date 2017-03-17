@@ -12,7 +12,7 @@
   </thead>
   <tbody>
     <% @pastes.each do |paste| %>
-      <tr>
+      <tr class="<%= paste.encrypted ? 'table-warning' : '' %>">
         <th scope="row"><%= link_to(paste.token, paste) %></th>
         <td><%= distance_of_time_in_words(paste.created_at, Time.zone.now) %></td>
         <td><%= distance_of_time_in_words(Time.zone.now, paste.expired_at) %></td>
