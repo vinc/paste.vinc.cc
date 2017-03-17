@@ -1,4 +1,4 @@
-<%= form_for(paste, remote: true) do |f| %>
+<%= form_for(paste) do |f| %>
   <% if paste.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(paste.errors.count, "error") %> prohibited this paste from being saved:</h2>
