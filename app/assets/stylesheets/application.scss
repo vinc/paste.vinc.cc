@@ -16,3 +16,8 @@
  */
 
 @import "bootstrap";
+
+body#new-paste,
+.breadcrumb {
+  background-color: $gray-lightest;
+}

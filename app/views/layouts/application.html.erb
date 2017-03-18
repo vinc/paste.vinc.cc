@@ -13,7 +13,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="<%= content_for(:page) %>">
+  <body id="<%= content_for(:page) %>">
     <div class="container">
       <% if alert %>
         <div class="alert alert-danger" role="alert"><%= alert %></div>
