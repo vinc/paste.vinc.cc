@@ -54,6 +54,14 @@ $(document).on('turbolinks:load', function() {
     $('[type=submit]', createForm).text('Sending ...');
   });
 
+  createForm.on('ajax:error', function(xhr, status, error) {
+    $('[type=submit]', createForm).
+      prop('disabled', true).
+      addClass('btn-danger').
+      removeClass('btn-primary').
+      text(status.statusText);
+  });
+
   var decryptContent = function(passphrase) {
     var contentDiv = $('.content');
 

@@ -87,6 +87,11 @@ Client side cryptography is provided by [libsodium.js][9].
 [16]: https://en.wikipedia.org/wiki/Scrypt
 
 
+## Limits
+
+- No more than `n + 1` requests per IP address in `10^n` seconds for `n` in `[0..3]`
+
+
 ## License
 
 Copyright (c) 2017 Vincent Ollivier. Released under MIT.

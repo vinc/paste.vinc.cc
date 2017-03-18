@@ -13,7 +13,15 @@ class PastesController < ApplicationController
   end
 
   def create
-    @paste = Paste.new(paste_params)
+    @pastes = Paste.where(ip_address: request.remote_ip)
+
+    (0..3).each do |i|
+      if @pastes.gt(created_at: (10 ** i).seconds.ago).count > i
+        return head(:too_many_requests)
+      end
+    end
+
+    @paste = @pastes.new(paste_params)
 
     respond_to do |format|
       if @paste.save
