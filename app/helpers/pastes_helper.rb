@@ -1,7 +1,6 @@
 module PastesHelper
   RENDER_OPTIONS = {
     filter_html: true,
-    hard_wrap: true,
     link_attributes: { rel: 'nofollow' }
   }
   ENGINE_OPTIONS = {
