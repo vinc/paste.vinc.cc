@@ -7,7 +7,7 @@
 
 ## Markdown
 
-Paste should be written in a [Markdown][2] format following the [CommonMark][3]
+Pastes should be written in a [Markdown][2] format following the [CommonMark][3]
 specification with some additions from [GitHub Flavored Markdown][4].
 
 ### Parsers
@@ -36,38 +36,55 @@ encryption has been used or not.
 [7]: https://en.wikipedia.org/wiki/Nofollow
 
 
+## Syntax highlighting
+
+Paste can contain fenced code blocks with an optional language name:
+
+    ```ruby
+    module HelloWorld
+      def print_hello
+        puts "Hello, World!"
+      end
+    end
+    ```
+
+Syntax highlighting is done in the browser with [highlight.js][8]
+
+[8]: https://highlightjs.org/
+
+
 ## Cryptography
 
 Pastes can be encrypted in the browser with a passphrase before being sent to
 the server. The passphrase can be chosen by the user or randomly generated, in
 any case it is never communicated to the server.
 
-Client side cryptography is provided by [libsodium.js][8].
+Client side cryptography is provided by [libsodium.js][9].
 
-### [Random data generation][9]
+### [Random data generation][10]
 
-- Source: [Web Cryptography API][10]
+- Source: [Web Cryptography API][11]
 
-### [Secret-key authenticated encryption][11]
+### [Secret-key authenticated encryption][12]
 
-- Encryption: [Salsa20][12]
-- Authentication: [Poly1305][13]
+- Encryption: [Salsa20][13]
+- Authentication: [Poly1305][14]
 
-### [Key derivation][14]
+### [Key derivation][15]
 
-- Function: [Scrypt][15]
+- Function: [Scrypt][16]
 - Parameters:
   - `memlimit`: 16 MB
   - `opslimit`: `memlimit` / 32
 
-[8]: https://github.com/jedisct1/libsodium.js
-[9]: https://download.libsodium.org/libsodium/content/generating_random_data/
-[10]: https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues
-[11]: https://download.libsodium.org/libsodium/content/secret-key_cryptography/authenticated_encryption.html
-[12]: https://en.wikipedia.org/wiki/Salsa20
-[13]: https://en.wikipedia.org/wiki/Poly1305
-[14]: https://download.libsodium.org/libsodium/content/password_hashing/scrypt.html
-[15]: https://en.wikipedia.org/wiki/Scrypt
+[9]: https://github.com/jedisct1/libsodium.js
+[10]: https://download.libsodium.org/libsodium/content/generating_random_data/
+[11]: https://developer.mozilla.org/en-US/docs/Web/API/RandomSource/getRandomValues
+[12]: https://download.libsodium.org/libsodium/content/secret-key_cryptography/authenticated_encryption.html
+[13]: https://en.wikipedia.org/wiki/Salsa20
+[14]: https://en.wikipedia.org/wiki/Poly1305
+[15]: https://download.libsodium.org/libsodium/content/password_hashing/scrypt.html
+[16]: https://en.wikipedia.org/wiki/Scrypt
 
 
 ## License
