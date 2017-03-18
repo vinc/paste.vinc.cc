@@ -89,7 +89,8 @@ Client side cryptography is provided by [libsodium.js][9].
 
 ## Limits
 
-- No more than `n + 1` requests per IP address in `10^n` seconds for `n` in `[0..3]`
+- No more than 100 KB per paste
+- No more than `n + 1` pastes per IP address in `10^n` seconds for `n` in `[0..3]`
 
 
 ## License

@@ -13,6 +13,10 @@ class PastesController < ApplicationController
   end
 
   def create
+    if paste_params[:content].size > 100.kilobytes
+      return head(:payload_too_large)
+    end
+
     @pastes = Paste.where(ip_address: request.remote_ip)
 
     (0..3).each do |i|
