@@ -4,16 +4,12 @@ var Crypto = {
   },
 
   deriveKey: function(passphrase) {
+    var length = sodium.crypto_secretbox_KEYBYTES;
     var salt = sodium.from_hex($('meta[name=crypto-salt]').attr('content'));
+    var ops = sodium.crypto_pwhash_scryptsalsa208sha256_OPSLIMIT_INTERACTIVE;
+    var mem = sodium.crypto_pwhash_scryptsalsa208sha256_MEMLIMIT_INTERACTIVE;
 
-    console.assert(salt.length == sodium.crypto_pwhash_SALTBYTES);
-
-    var keyLength = sodium.crypto_secretbox_KEYBYTES;
-    var ops = sodium.crypto_pwhash_OPSLIMIT_INTERACTIVE;
-    var mem = sodium.crypto_pwhash_MEMLIMIT_INTERACTIVE / 2;
-    var algo = sodium.crypto_pwhash_ALG_DEFAULT;
-
-    return sodium.crypto_pwhash(keyLength, passphrase, salt, ops, mem, algo);
+    return sodium.crypto_pwhash_scryptsalsa208sha256(length, passphrase, salt, ops, mem);
   },
 
   encrypt: function(plaintext, passphrase) {
