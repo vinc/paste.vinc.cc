@@ -40,13 +40,13 @@ encryption has been used or not.
 
 Paste can contain fenced code blocks with an optional language name:
 
-    ```ruby
-    module HelloWorld
-      def print_hello
-        puts "Hello, World!"
-      end
-    end
-    ```
+```ruby
+module HelloWorld
+  def print_hello
+    puts "Hello, World!"
+  end
+end
+```
 
 Syntax highlighting is done in the browser with [highlight.js][8]
 
