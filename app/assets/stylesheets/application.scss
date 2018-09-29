@@ -15,9 +15,11 @@
  *= require_self
  */
 
+$primary: #C35;
+
 @import "bootstrap";
 
 body#new-paste,
 .breadcrumb {
-  background-color: $gray-lightest;
+  background-color: $gray-100;
 }
