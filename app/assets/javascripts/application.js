@@ -13,9 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require tether
+//= require popper.js
 //= require bootstrap
-//= require markdown-it
+//= require markdown-it/dist/markdown-it
 //= require highlightjs
-//= require sodium_sumo.min.js
+//= require libsodium-sumo/dist/modules-sumo/libsodium-sumo
+//= require libsodium-wrappers-sumo/dist/modules-sumo/libsodium-wrappers
 //= require_tree .

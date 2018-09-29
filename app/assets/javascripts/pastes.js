@@ -20,9 +20,7 @@ $(document).on('turbolinks:load', function() {
     var passphrase = $('[name=passphrase]').val();
 
     if (passphrase.length > 0) {
-      $('[type=submit]', createForm).
-        prop('disabled', true).
-        text('Encrypting ...');
+      $('[type=submit]', createForm).prop('disabled', true).text('Encrypting ...');
     }
 
     // Derivating a key from the passphrase will block the UI thread,
@@ -75,6 +73,7 @@ $(document).on('turbolinks:load', function() {
           try {
             content = Crypto.decrypt(encryptedContent, passphrase);
           } catch(e) {
+            console.error(e);
             return decryptContentError(passphrase, 'Invalid passphrase');
           }
 
@@ -104,26 +103,26 @@ $(document).on('turbolinks:load', function() {
   };
 
   var decryptForm = $('#decrypt_paste');
-  
+
   var decryptContentInit = function(passphrase) {
     if (passphrase.length > 0) {
       $('[name=passphrase]', decryptForm).prop('disabled', true);
-      $('[type=submit]',     decryptForm).prop('disabled', true).
-        text('Decrypting ...');
+      $('[type=submit]', decryptForm).prop('disabled', true).text('Decrypting ...');
     }
 
     setTimeout(function() {
-      decryptContent(passphrase);
+      sodium.ready.then(function() {
+        decryptContent(passphrase);
+      });
 
       $('[name=passphrase]', decryptForm).prop('disabled', false);
-      $('[type=submit]',     decryptForm).prop('disabled', false).
-        text('Decrypt');
+      $('[type=submit]', decryptForm).prop('disabled', false).text('Decrypt');
     }, 0);
 
   };
 
   var passphrase = window.location.hash.slice(1);
-  
+
   $('[name=passphrase]').val(passphrase);
   decryptContentInit(passphrase);
 

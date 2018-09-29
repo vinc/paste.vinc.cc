@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "highlightjs": "^9.10.0",
+    "libsodium-sumo": "^0.7.3",
+    "libsodium-wrappers-sumo": "^0.7.3",
+    "markdown-it": "^8.4.2"
+  }
+}
