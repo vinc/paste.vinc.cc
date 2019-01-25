@@ -10,31 +10,31 @@ argparse@^1.0.7:
     sprintf-js "~1.0.2"
 
 entities@~1.1.1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.1.tgz#6e5c2d0a5621b5dadaecef80b90edfb5cd7772f0"
-  integrity sha1-blwtClYhtdra7O+AuQ7ftc13cvA=
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.2.tgz#bdfa735299664dfafd34529ed4f8522a275fea56"
+  integrity sha512-f2LZMYl1Fzu7YSBKg+RoROelpOaNrcGmE9AZubeDfrCEia483oW4MI4VyFd5VNHIgQ/7qm1I0wUHK1eJnn2y2w==
 
 highlightjs@^9.10.0:
-  version "9.10.0"
-  resolved "https://registry.yarnpkg.com/highlightjs/-/highlightjs-9.10.0.tgz#fca9b78ddaa3b1abca89d6c3ee105ad270a80190"
-  integrity sha1-/Km3jdqjsavKidbD7hBa0nCoAZA=
+  version "9.12.0"
+  resolved "https://registry.yarnpkg.com/highlightjs/-/highlightjs-9.12.0.tgz#9b84eb42a7aa8488eb69ac79fec44cf495bf72a1"
+  integrity sha512-eAhWMtDZaOZIQdxIP4UEB1vNp/CVXQPdMSihTSuaExhFIRC0BVpXbtP3mTP1hDoGOyh7nbB3cuC3sOPhG5wGDA==
 
-libsodium-sumo@0.7.3, libsodium-sumo@^0.7.3:
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/libsodium-sumo/-/libsodium-sumo-0.7.3.tgz#c38d99dc3b2c056870ca8f3ac8f1ecbb150ecbbf"
-  integrity sha512-zCik0rx9XVNKMLY/t+kI6L/+LGomPx/UZ5iiU2YzCDN2K3GPxY2e0OnjJuX/W3/03fRV7W0btNOOgWpvab2P5g==
+libsodium-sumo@0.7.4, libsodium-sumo@^0.7.3:
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/libsodium-sumo/-/libsodium-sumo-0.7.4.tgz#fb99816dac06df5d34cd9e04a99253d23fc0d6bd"
+  integrity sha512-xBQaiQ7X0pKmeT7+stva/JplcqdDzd3sag2nVC+UIenYg33w5QUihuZfI1+7JVODvCr4MXFsHm9lv+eIVrJALA==
 
 libsodium-wrappers-sumo@^0.7.3:
-  version "0.7.3"
-  resolved "https://registry.yarnpkg.com/libsodium-wrappers-sumo/-/libsodium-wrappers-sumo-0.7.3.tgz#eeb4fc93a9802c34558e0f2ec350295ba6246fc8"
-  integrity sha512-JNEZ74zu83BiPxXiYCexVOJdLaNpQTig5bC28MsPzBjzUwIDdLSabEfQNbEtODaNcqq3UlEgYa8IGvDF1jrINA==
+  version "0.7.4"
+  resolved "https://registry.yarnpkg.com/libsodium-wrappers-sumo/-/libsodium-wrappers-sumo-0.7.4.tgz#68443ea2e57fb51e4aefb3f9487be7321fbaf68c"
+  integrity sha512-znWGEGMXru7uIilryz+FvOTrNfT7yK0+17yOqVqp6nRulB9fjfML3VtFKMShOyWjlPqrFFPgYyeVrFb9I2th3g==
   dependencies:
-    libsodium-sumo "0.7.3"
+    libsodium-sumo "0.7.4"
 
 linkify-it@^2.0.0:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/linkify-it/-/linkify-it-2.0.3.tgz#d94a4648f9b1c179d64fa97291268bdb6ce9434f"
-  integrity sha1-2UpGSPmxwXnWT6lykSaL22zpQ08=
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/linkify-it/-/linkify-it-2.1.0.tgz#c4caf38a6cd7ac2212ef3c7d2bde30a91561f9db"
+  integrity sha512-4REs8/062kV2DSHxNfq5183zrqXMl7WP0WzABH9IeJI+NLm429FgE1PDecltYfnOoFDFlZGh2T8PfZn0r+GTRg==
   dependencies:
     uc.micro "^1.0.1"
 
